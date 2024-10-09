@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        background-color: #fff;
+      }
+      #card-align {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        height: 100vh;
+      }
+      .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+      }
+      .btn-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+      }
+    </style>
+  </head>
+  <body id="card-align">
+    <div class="card" style="position: relative; background-color: #fff">
+      <img
+        src="xWwsxK.png"
+        style="
+          height: 350px;
+          width: 233px;
+          text-align: center;
+          margin-bottom: 20px;
+        "
+      />
+      <div
+        style="
+          top: 240px;
+          position: absolute;
+          text-align: center;
+          width: 95%;
+          left: 10px;
+          background-color: white;
+        "
+      >
+        <span id="username" style="height: 77.6px">Name</span>
+      </div>
+      <img
+        src="https://www.testhouse.net/wp-content/uploads/2021/11/default-avatar.jpg"
+        id="dp"
+        style="top: 140px; left: 82px; height: 77.6px; position: absolute"
+      />
+    </div>
+
+    <input placeholder="type your name" id="name" />
+    <input placeholder="type your image url" id="url" />
+    
+    <button class="btn btn-default" onclick="download()">Download</button>
+
+    <script>document.getElementById("name").addEventListener("change", ({ target }) => {
+        document.getElementById("username").innerHTML = target.value;
+      });
+      
+      document.getElementById("url").addEventListener("change", ({ target }) => {
+        document.getElementById("dp").src = target.value;
+      });
+      
+      function download() {
+        html2canvas(document.querySelector(".card"), {
+          useCORS: true,
+          onrendered: (canvas) => Canvas2Image.saveAsPNG(canvas),
+        });
+      }
+    </script>
+    <script src="https://superal.github.io/canvas2image/canvas2image.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  </body>
+</html>
